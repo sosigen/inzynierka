@@ -1,5 +1,4 @@
 datasets/
-*.keras
 *.h5
 
 # Byte-compiled / optimized / DLL files
