@@ -6,9 +6,9 @@ import sys
 # -------------------------
 # 1. Load Your Model and Define Paths
 # -------------------------
-model_path = "src/models/CNN/raw/fer2013plus_79%.keras"
-input_video_path = "src/video/input.mp4"
-face_cascade_path = "src/utils/haarcascade_frontalface_default.xml"
+model_path = "./fer2013plus_79%.keras"
+input_video_path = "./input_no_headphones.mp4"
+face_cascade_path = "./haarcascade_frontalface_alt2.xml"
 skip_n = 4  # Run model prediction every 4th frame
 
 # Parameters for model input
@@ -16,7 +16,7 @@ target_size = (48, 48)       # Change this to match your model's expected resolu
 desired_channels = 1         # Set to 1 for single-channel input; set to 3 to duplicate grayscale into 3 channels
 
 model = keras.models.load_model(model_path)
-emotion_classes = ["Angry", "Disgust", "Fear", "Happy", "Sad", "Surprise", "Neutral"]
+emotion_classes = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
 face_cascade = cv2.CascadeClassifier(face_cascade_path)
 
 # -------------------------
@@ -173,23 +173,3 @@ while True:
         break
 cap_annotated.release()
 cv2.destroyAllWindows()
-
-
-
-
-def build_gcn_model(n_node_features, n_classes, num_nodes):
-    x_in = tf.keras.Input(shape=(num_nodes, n_node_features), name="node_features")
-    a_in = tf.keras.Input(shape=(num_nodes, num_nodes), name="adjacency_matrix")
-    
-    x1 = NoMaskGCNConv(32, activation='relu')([x_in, a_in])
-    x2 = NoMaskGCNConv(64, activation='relu')([x1, a_in])
-    
-    x_max = GlobalMaxPool()(x2)
-    x_mean = GlobalAvgPool(name='global_avg_pool')(x2)
-    x_concat = Concatenate()([x_max, x_mean])
-    
-    x_fc = Dense(256, activation='relu')(x_concat)
-    output = Dense(n_classes, activation='softmax')(x_fc)
-    
-    model = Model(inputs=[x_in, a_in], outputs=output)
-    return model
