@@ -11,7 +11,7 @@ Modules needed to train a model are split between individual files based on the 
 3. Train the model
 4. Generate metrics for the trained model
 
-If you are using Google Colab or a jupyter notebook it's as simple as adding the scripts as a separate cells in the correct order. Some architectures require different input shape and this fact has to be reflected in the copy of fer2013plus_data_load. It can be easily determined by looking at a model input layer's shape. Possible shapes are: (48, 48, 1), (48, 48, 3) and (224, 224, 3)
+If you are using Google Colab or a jupyter notebook it's as simple as adding the scripts as a separate cells in the correct order. Some architectures require different input shape and this fact has to be reflected in the copy of fer2013plus_data_load. It can be easily determined by looking at a model input layer's shape. Possible shapes are: (48, 48, 1), (48, 48, 3) and (224, 224, 3).
 
 ## Models (src/models)
 
