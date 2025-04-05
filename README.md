@@ -30,11 +30,9 @@ This directory holds code responsible for creating models (3.). There are 3 arch
 This directory contains files necessary for the actual usage of the models. 2 python scripts able to annotate either a input video (annotate_video_with_FER.py) or live camera feed (annotate_camera_with_FER.py) with model's classifications. The scripts require haarcascade XML file and .keras or .h5 model file. Requirements needed for those scripts to run are defined in requirements.txt. To install run:
 ```shell pip install -r ./src/video/requirements.txt```
 
-## Utils
-The project uses the FER2013+ dataset for training and evaluation. Data loading utilities can be found in `src/utils/fer2013plus_data_load.ipynb`.
-
-## Utilities
+## Utils (src/utils)
 
 - `gradient_logger.ipynb`: Utility for logging gradient information during training
 - `metrics_generator.ipynb`: Tool for generating performance metrics based on model's training history and validation run (4.)
 - `unzip.ipynb`: Utility for unzipping dataset files (1.)
+- `fer2013plus_data_load.ipynb`: load dataset from files to Keras ImageDataGenerator (2.), which can be later passed directly to model.fit()
