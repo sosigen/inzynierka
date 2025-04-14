@@ -2,6 +2,10 @@
 
 This repository contains code and resources for a engineer's thesis focused on Facial Expression Recognition (FER) using various deep learning models.
 
+# Dataset
+
+To access FER2013+ dataset, please use this google drive link https://drive.google.com/file/d/1mJ4WIt2Ho-o6yh-5QOu_XEhdQ6c3hjYf/view?usp=sharing
+
 # Project Structure
 
 ## Usage
